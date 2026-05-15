@@ -32,57 +32,48 @@ This project explores an alternative probabilistic framework based on:
 
 ---
 
-# Mathematical Model
+# EEG Artifact Removal via ECG Regression
 
-At each time step:
+## Signal Model
 
-\[
-x_t \sim \mathcal{N}(\mu, \Sigma)
-\]
+At each time step, the multivariate observation is modeled as:
 
-where:
+$$x_t \sim \mathcal{N}(\mu, \Sigma)$$
 
-\[
-x_t =
-\begin{bmatrix}
-EEG_1(t) \\
-EEG_2(t) \\
-\vdots \\
-ECG(t)
-\end{bmatrix}
-\]
+where the observation vector stacks all channels:
 
-The covariance matrix:
+$$x_t = \begin{bmatrix} \text{EEG}_1(t) \\ \text{EEG}_2(t) \\ \vdots \\ \text{ECG}(t) \end{bmatrix}$$
 
-\[
-\Sigma = \frac{1}{T} X X^T
-\]
+## Covariance Structure
 
-captures dependencies between EEG and ECG channels.
+The covariance matrix is estimated empirically across $T$ time steps:
 
-Artifact contamination is modeled as:
+$$\Sigma = \frac{1}{T} X X^T$$
 
-\[
-E(t) = S(t) + \beta h(t)
-\]
+This captures the statistical dependencies between EEG and ECG channels, which is the basis for identifying artifact contamination.
 
-where:
+## Artifact Model
 
-- \(S(t)\) is the clean EEG signal
-- \(h(t)\) is the ECG signal
-- \(\beta\) represents contamination coefficients
+ECG contamination in the EEG is modeled as an additive term:
+
+$$E(t) = S(t) + \beta h(t)$$
+
+| Symbol  | Meaning                            |
+| ------- | ---------------------------------- |
+| $E(t)$  | Observed (contaminated) EEG signal |
+| $S(t)$  | Clean underlying EEG signal        |
+| $h(t)$  | ECG signal                         |
+| $\beta$ | Contamination coefficient          |
+
+## Artifact Removal
 
 The artifact estimate is:
 
-\[
-\hat{A}(t) = \beta h(t)
-\]
+$$\hat{A}(t) = \beta h(t)$$
 
-and cleaned EEG is obtained via:
+and the cleaned EEG is recovered by subtracting the estimate:
 
-\[
-\hat{S}(t) = E(t) - \hat{A}(t)
-\]
+$$\hat{S}(t) = E(t) - \hat{A}(t)$$
 
 ---
 
