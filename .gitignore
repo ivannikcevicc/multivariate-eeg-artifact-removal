@@ -1,0 +1,66 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# MNE temporary/cache files
+.mne/
+mne-python.json
+
+# Data files (recommended for large EEG datasets)
+data/
+*.edf
+*.bdf
+*.fif
+*.set
+*.mat
+
+# Outputs
+outputs/
+figures/
+results/
+
+# Testing
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Jupyter runtime
+*.ipynb_checkpoints
+
+# Misc
+*.swp
+*.swo
