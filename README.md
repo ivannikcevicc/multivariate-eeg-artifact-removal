@@ -12,27 +12,15 @@ The estimated artifact component is reconstructed and subtracted from EEG signal
 
 ---
 
-# Motivation
+## Motivation
 
-EEG recordings are frequently contaminated by:
-
-- cardiac artifacts
-- motion artifacts
-- muscle activity
-- electrode movement
+EEG recordings are frequently contaminated by cardiac artifacts, motion artifacts, muscle activity, and electrode movement.
 
 Traditional approaches such as Independent Component Analysis (ICA) require blind source separation assumptions and can remove useful neural information.
 
-This project explores an alternative probabilistic framework based on:
-
-- covariance modeling
-- Gaussian assumptions
-- adaptive regression
-- multimodal physiological sensing
+This project explores an alternative probabilistic framework based on covariance modeling, Gaussian assumptions, adaptive regression, and multimodal physiological sensing.
 
 ---
-
-# EEG Artifact Removal via ECG Regression
 
 ## Signal Model
 
@@ -77,41 +65,39 @@ $$\hat{S}(t) = E(t) - \hat{A}(t)$$
 
 ---
 
-# Planned Features
+## Planned Features
 
-- Sliding-window covariance estimation
-- Adaptive artifact estimation
-- ECG-informed EEG cleaning
-- Optional accelerometer integration
-- Comparison with ICA
-- Signal visualization tools
-- Spectral preservation analysis
-
----
-
-# Dataset
-
-Initial experiments use the PhysioNet CAP Sleep Database:
-
-https://physionet.org/content/capslpdb/1.0.0/
-
-Signals used:
-
-- EEG
-- ECG
-
-Optional future signals:
-
-- EMG
-- motion sensors
+| Feature                              | Status   |
+| ------------------------------------ | -------- |
+| Sliding-window covariance estimation | Planned  |
+| Adaptive artifact estimation         | Planned  |
+| ECG-informed EEG cleaning            | Planned  |
+| Accelerometer integration            | Optional |
+| Comparison with ICA                  | Planned  |
+| Signal visualization tools           | Planned  |
+| Spectral preservation analysis       | Planned  |
 
 ---
 
-# Tech Stack
+## Dataset
 
-- Python
-- NumPy
-- SciPy
-- MNE
-- Matplotlib
-- Pandas
+Initial experiments use the [PhysioNet CAP Sleep Database](https://physionet.org/content/capslpdb/1.0.0/).
+
+| Signal         | Usage             |
+| -------------- | ----------------- |
+| EEG            | Primary           |
+| ECG            | Primary           |
+| EMG            | Optional (future) |
+| Motion sensors | Optional (future) |
+
+---
+
+## Tech Stack
+
+| Library    | Purpose               |
+| ---------- | --------------------- |
+| NumPy      | Numerical computation |
+| SciPy      | Signal processing     |
+| MNE        | EEG/MEG data handling |
+| Matplotlib | Visualization         |
+| Pandas     | Data management       |
