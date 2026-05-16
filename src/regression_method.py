@@ -52,3 +52,38 @@ beta = beta.reshape(-1, 1)
 output_eeg = eeg - beta*ecg
 
 print(output_eeg)
+
+
+
+# ============================================================
+# PLOTTING: RAW vs CLEANED EEG
+# ============================================================
+
+
+
+time = np.arange(n_samples) / sfreq
+
+for i, ch in enumerate(EEG_CHANNELS):
+    fig, ax = plt.subplots(figsize=(14, 4))
+    ax.plot(time, eeg[i],         label="Raw EEG",     alpha=0.7)
+    ax.plot(time, output_eeg[i], label="Cleaned EEG", alpha=0.9)
+    ax.set_title(ch)
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("Amplitude (V)")
+    ax.legend()
+    fig.tight_layout()
+
+# ============================================================
+# PLOT: ECG
+# ============================================================
+
+fig, ax = plt.subplots(figsize=(14, 3))
+ax.plot(time, ecg[0])
+ax.set_title("ECG Signal")
+ax.set_xlabel("Time (s)")
+ax.set_ylabel("Amplitude (V)")
+fig.tight_layout()
+
+plt.show()
+
+print("\nDone.")
