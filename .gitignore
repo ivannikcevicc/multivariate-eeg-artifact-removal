@@ -64,3 +64,5 @@ htmlcov/
 # Misc
 *.swp
 *.swo
+
+test/
